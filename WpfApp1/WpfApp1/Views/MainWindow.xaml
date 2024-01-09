@@ -1,0 +1,21 @@
+﻿<Window x:Class="WpfApp1.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodel="clr-namespace:WpfApp1.ViewModels"
+        xmlns:local="clr-namespace:WpfApp1.Views"
+        mc:Ignorable="d"
+        Title="Prueba MVVM demo" Height="450" Width="800">
+    <Window.Resources>
+        <viewmodel:MainWindowViewModel x:Key="MainWindowViewModel"></viewmodel:MainWindowViewModel>
+    </Window.Resources>
+    <Grid DataContext="{Binding Source={StaticResource MainWindowViewModel}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Button Content="Obtener clientes" Margin="10" HorizontalAlignment="Center" Command="{Binding CustomerCommand}"/>
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Customers}" Margin="10"/>
+    </Grid>
+</Window>
